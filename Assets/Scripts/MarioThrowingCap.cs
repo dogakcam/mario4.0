@@ -4,9 +4,11 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using DG.Tweening;
 
+
 public class MarioThrowingCap : MonoBehaviour
 {
-    public TrailRenderer trailRenderer;
+   
+    public ParticleSystem CapTrail;
     [Header("Public References")]
     public ParticleSystem CapEffect;
     public Transform Cap;
@@ -21,10 +23,12 @@ public class MarioThrowingCap : MonoBehaviour
     [Space]
     [Header("Public bools")]
     public bool Spinning;
+
     private void Start()
     {
-        trailRenderer.enabled = false;
+        CapTrail.Stop();
     }
+    
     void Update()
     {
 
@@ -50,6 +54,7 @@ public class MarioThrowingCap : MonoBehaviour
         
     }
     
+    
 
     void ThrowingCap()
     {
@@ -64,7 +69,7 @@ public class MarioThrowingCap : MonoBehaviour
 
         //Mario Spinning
         //throwSequence.Join(Mario.DORotate(new Vector3(0, 360f, 0), spinningDuration, RotateMode.FastBeyond360));
-        trailRenderer.enabled = true;
+        CapTrail.Play();
 
     }
 
@@ -81,8 +86,7 @@ public class MarioThrowingCap : MonoBehaviour
 
         //Cap original Rotation
         Invoke("OriginalRotation", ReturnDuration);
-        trailRenderer.enabled = false;
-
+        CapTrail.Stop();
     }
 
     void OriginalRotation()
