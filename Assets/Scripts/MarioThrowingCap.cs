@@ -7,7 +7,7 @@ using DG.Tweening;
 
 public class MarioThrowingCap : MonoBehaviour
 {
-   
+    public TrailRenderer CapTrailRenderer;
     public ParticleSystem CapTrail;
     [Header("Public References")]
     public ParticleSystem CapEffect;
@@ -27,8 +27,10 @@ public class MarioThrowingCap : MonoBehaviour
     private void Start()
     {
         CapTrail.Stop();
+        CapTrailRenderer.enabled = false;
+
     }
-    
+
     void Update()
     {
 
@@ -58,6 +60,7 @@ public class MarioThrowingCap : MonoBehaviour
 
     void ThrowingCap()
     {
+        CapTrailRenderer.enabled = true;
 
         Sequence throwSequence = DOTween.Sequence();
 
@@ -75,7 +78,7 @@ public class MarioThrowingCap : MonoBehaviour
 
     void ReturnCap()
     {
-
+        CapTrailRenderer.enabled = false;
         Sequence ReturnSequence = DOTween.Sequence();
 
         //Return the Cap

@@ -11,7 +11,7 @@ public class EndGame : MonoBehaviour
         if (collision.gameObject.tag == "Player")
 
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(2);
         }
     }
 }
